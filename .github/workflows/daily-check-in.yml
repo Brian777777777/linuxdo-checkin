@@ -35,7 +35,7 @@ jobs:
           TELEGRAM_USERID: ${{ secrets.TELEGRAM_USERID }}
         if: ${{ success() && env.TELEGRAM_TOKEN != '' && env.TELEGRAM_USERID != '' }}
         run: |
-          curl -s -X POST "https://sctapi.ftqq.com/ ${{ secrets.sendkey }}.send"  \
+          curl -s -X POST "https://sctapi.ftqq.com/ ${{ secrets.SENDKEY }}.send"  \
           -H 'Content-Type: application/json;charset=utf-8' \
           -d desp=HTML \
           -d title="✅ <b>LINUX DO</b> 每日签到成功完成"
@@ -46,7 +46,7 @@ jobs:
           TELEGRAM_USERID: ${{ secrets.TELEGRAM_USERID }}
         if: ${{ failure() && env.TELEGRAM_TOKEN != '' && env.TELEGRAM_USERID != '' }}
         run: |
-          curl -s -X POST "https://sctapi.ftqq.com/ ${{ secrets.sendkey }}.send" \
+          curl -s -X POST "https://sctapi.ftqq.com/ ${{ secrets.SENDKEY }}.send" \
           -H 'Content-Type: application/json;charset=utf-8' \
           -d desp=HTML \
           -d title="❌ <b>LINUX DO</b> 每日签到失败"
