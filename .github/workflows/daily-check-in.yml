@@ -46,8 +46,7 @@ jobs:
         run: |
           curl -s -X POST "https://sctapi.ftqq.com/${{ env.SENDKEY }}.send" \
           -H 'Content-Type: application/json;charset=utf-8' \
-          -d desp=HTML \
-          -d title="❌ <b>LINUX DO</b> 每日签到失败"
+          -d '{"title": "❌ <b>LINUX DO</b> 每日签到失败", "desp": "HTML"}'
 
       - name: Delete workflow runs
         uses: Mattraks/delete-workflow-runs@v2
