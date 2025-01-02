@@ -24,8 +24,7 @@ jobs:
 
       - name: Execute script
         env:
-          USERNAME: ${{ secrets.USERNAME }}
-          PASSWORD: ${{ secrets.PASSWORD }}
+          SENDKEY: ${{ secrets.SENDKEY }}
         run: |
           python main.py
 
