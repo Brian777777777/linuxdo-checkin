@@ -33,7 +33,7 @@ jobs:
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_USERID: ${{ secrets.TELEGRAM_USERID }}
-        if: ${{ success() && env.TELEGRAM_TOKEN != '' && env.TELEGRAM_USERID != '' }}
+        if: ${{ success() }}
         run: |
           curl -s -X POST "https://sctapi.ftqq.com/${{ secrets.SENDKEY }}.send"  \
           -H 'Content-Type: application/json;charset=utf-8' \
@@ -44,7 +44,7 @@ jobs:
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_USERID: ${{ secrets.TELEGRAM_USERID }}
-        if: ${{ failure() && env.TELEGRAM_TOKEN != '' && env.TELEGRAM_USERID != '' }}
+        if: ${{ failure() }}
         run: |
           curl -s -X POST "https://sctapi.ftqq.com/${{ secrets.SENDKEY }}.send" \
           -H 'Content-Type: application/json;charset=utf-8' \
