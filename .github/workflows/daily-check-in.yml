@@ -24,28 +24,27 @@ jobs:
 
       - name: Execute script
         env:
-          SENDKEY: ${{ secrets.SENDKEY }}
+           USERNAME: ${{ secrets.USERNAME }}
+           PASSWORD: ${{ secrets.PASSWORD }}
         run: |
           python main.py
 
       - name: Send Telegram Notification
         env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_USERID: ${{ secrets.TELEGRAM_USERID }}
+          SENDKEY: ${{ secrets.SENDKEY }}
         if: ${{ success() }}
         run: |
-          curl -s -X POST "https://sctapi.ftqq.com/${{ secrets.SENDKEY }}.send"  \
+          curl -s -X POST "https://sctapi.ftqq.com/${{ env.SENDKEY }}.send"  \
           -H 'Content-Type: application/json;charset=utf-8' \
           -d desp=HTML \
           -d title="<b>LINUX DO</b> 每日签到成功完成"
 
       - name: Send Failure Notification
         env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_USERID: ${{ secrets.TELEGRAM_USERID }}
+          SENDKEY: ${{ secrets.SENDKEY }}
         if: ${{ failure() }}
         run: |
-          curl -s -X POST "https://sctapi.ftqq.com/${{ secrets.SENDKEY }}.send" \
+          curl -s -X POST "https://sctapi.ftqq.com/${{ env.SENDKEY }}.send" \
           -H 'Content-Type: application/json;charset=utf-8' \
           -d desp=HTML \
           -d title="❌ <b>LINUX DO</b> 每日签到失败"
