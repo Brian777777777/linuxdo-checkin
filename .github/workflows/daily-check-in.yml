@@ -36,7 +36,7 @@ jobs:
         run: |
           curl -s -X POST "https://sctapi.ftqq.com/${{ env.SENDKEY }}.send" \
           -H 'Content-Type: application/json;charset=utf-8' \
-          -d '{"title": "<b>LINUX DO</b> 每日签到成功完成", "desp": "HTML"}'
+          -d '{"title": "LINUX DO 每日签到成功完成", "desp": "签到成功"}'
 
       - name: Send Failure Notification
         env:
@@ -45,7 +45,7 @@ jobs:
         run: |
           curl -s -X POST "https://sctapi.ftqq.com/${{ env.SENDKEY }}.send" \
           -H 'Content-Type: application/json;charset=utf-8' \
-          -d '{"title": "❌ <b>LINUX DO</b> 每日签到失败", "desp": "HTML"}'
+          -d '{"title": "❌ LINUX DO 每日签到失败", "desp": "签到失败"}'
 
       - name: Delete workflow runs
         uses: Mattraks/delete-workflow-runs@v2
