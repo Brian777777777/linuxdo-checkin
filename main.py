@@ -57,7 +57,7 @@ class LinuxDoBrowser:
     def browse_post(self, page):
         prev_url = None
         # 开始自动滚动，最多滚动10次
-        for _ in range(10):
+        for _ in range(2):
             # 随机滚动一段距离
             scroll_distance = random.randint(550, 650)  # 随机滚动 550-650 像素
             logger.info(f"Scrolling down by {scroll_distance} pixels...")
